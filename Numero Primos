@@ -1,0 +1,28 @@
+
+function is_prime {
+  local num=$1
+  if [[ $num -lt 2 ]]; then
+    return 1 # El número es menor que 2, no es primo
+  fi
+  for (( i=2; i<=num/2; i++ )); do
+    if [[ $((num%i)) -eq 0 ]]; then
+      return 1 # El número es divisible por otro número, no es primo
+    fi
+  done
+  return 0 # El número es primo
+}
+
+while true; do
+  read -p "Introduce un número: " input
+  if [[ $input =~ ^[0-9]+$ ]]; then
+    is_prime $input
+    if [[ $? -eq 0 ]]; then
+      echo "$input es primo"
+    else
+      echo "$input no es primo"
+    fi
+    break
+  else
+    echo "Error: $input no es un número"
+  fi
+done
