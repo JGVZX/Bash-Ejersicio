@@ -1,0 +1,10 @@
+
+read -p "Introduce el número de argumentos: " num_args
+
+if [ $num_args -eq 1 ]; then
+    
+    echo "¡Hola, $arg!"
+else
+    echo "Error: Se esperaba exactamente 1 argumento"
+    exit 1
+fi
